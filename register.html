@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Регистрация</title>
 <link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#000000">
 
 <style>
 * {
@@ -18,33 +19,30 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  align-items: flex-start;
+  padding-top: 120px;
   color: white;
-  background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #111827);
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
-}
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  background: linear-gradient(
+    to right,
+    #000000 50%,
+    #00ff00 50%
+  );
 }
 
 .card {
-  background: rgba(31, 41, 55, 0.8);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.85);
   padding: 40px;
-  border-radius: 16px;
-  width: 340px;
+  border-radius: 14px;
+  width: 360px;
   text-align: center;
-  animation: fadeInUp 1s ease forwards;
-  transform: translateY(40px);
+  box-shadow: 0 0 30px rgba(0,255,0,0.4);
+  animation: fadeIn 0.8s ease forwards;
   opacity: 0;
+  transform: translateY(30px);
 }
 
-@keyframes fadeInUp {
+@keyframes fadeIn {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -53,38 +51,39 @@ body {
 
 h2 {
   margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(0,255,0,0.6);
 }
 
 input {
   width: 100%;
   padding: 12px;
   margin-bottom: 15px;
-  border-radius: 8px;
-  border: none;
-  transition: 0.3s;
+  border-radius: 6px;
+  border: 1px solid #00ff00;
+  background: #000;
+  color: #00ff00;
 }
 
 input:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6;
-  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(0,255,0,0.7);
 }
 
 button {
   width: 100%;
   padding: 12px;
-  background: #3b82f6;
+  background: #00ff00;
   border: none;
-  border-radius: 8px;
-  color: white;
+  border-radius: 6px;
+  color: #000;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
 }
 
 button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(59,130,246,0.4);
+  box-shadow: 0 0 20px rgba(0,255,0,0.9);
+  transform: translateY(-2px);
 }
 </style>
 </head>
