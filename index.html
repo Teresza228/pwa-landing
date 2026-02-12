@@ -45,6 +45,7 @@ body {
   animation: fadeInUp 1s ease forwards;
   transform: translateY(30px);
   opacity: 0;
+  
 }
 
 @keyframes fadeInUp {
@@ -91,6 +92,10 @@ p {
     <h1>Добро пожаловать</h1>
     <p>Kickbet - это твой проводник в мир беттинга!</p>
     <a href="./register.html" class="btn">Зарегистрироваться</a>
+    <button id="installBtn" class="btn" style="margin-top:15px; display:none;">
+Установить приложение
+</button>
+
   </div>
 </div>
 
@@ -100,6 +105,24 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js');
   });
 }
+</script>
+<script>
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  const installBtn = document.getElementById('installBtn');
+  installBtn.style.display = 'inline-block';
+
+  installBtn.addEventListener('click', async () => {
+    installBtn.style.display = 'none';
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+  });
+});
 </script>
 
 </body>
