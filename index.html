@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PWA Landing</title>
+
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0f172a">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: white;
+  background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #111827);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+}
+
+/* Анимированный фон */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hero блок */
+.hero {
+  text-align: center;
+  max-width: 600px;
+  animation: fadeInUp 1.2s ease forwards;
+  transform: translateY(40px);
+  opacity: 0;
+}
+
+/* Плавное появление */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+p {
+  opacity: 0.8;
+  margin-bottom: 35px;
+}
+
+/* Кнопка */
+.btn {
+  padding: 15px 30px;
+  background: #3b82f6;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 rgba(59,130,246,0.6);
+}
+
+/* Hover эффект */
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(59,130,246,0.4);
+}
+
+/* Пульсация */
+.btn::after {
+  content: "";
+  position: absolute;
+}
+
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Добро пожаловать</h1>
+  <p>Современное PWA-приложение с установкой на устройство</p>
+  <a href="./register.html" class="btn">Зарегистрироваться</a>
+</div>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js');
+  });
+}
+</script>
+
+</body>
+</html>
